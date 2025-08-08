@@ -33,6 +33,24 @@ body {
   color: var(--text-color);
 }
 
+@keyframes tilt-n-move-shaking {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(5px, 5px) rotate(2deg);
+  }
+  50% {
+    transform: translate(0, 0) rotate(0eg);
+  }
+  75% {
+    transform: translate(-5px, 5px) rotate(-2deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
 h1 {
   margin-bottom: 1rem;
   font-size: 6rem;
@@ -105,6 +123,7 @@ header {
 .filter-dropdown:hover {
   background: #000000;
   color: var(--brand-color);
+  animation: tilt-n-move-shaking-tight 0.1s infinite;
 }
 
 .add-note-btn {
@@ -121,8 +140,8 @@ header {
 .add-note-btn:hover {
   background: var(--brand-color);
   color: var(--base-color);
+  animation: tilt-n-move-shaking-tight 0.1s infinite;
 }
-
 
 .notes-grid {
   display: grid;
@@ -143,9 +162,28 @@ header {
   max-height: 300px;
 }
 
+@keyframes tilt-n-move-shaking-tight {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(3px, 3px) rotate(1deg);
+  }
+  50% {
+    transform: translate(0, 0) rotate(0eg);
+  }
+  75% {
+    transform: translate(-3px, 3px) rotate(-1deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
 .note-card:hover {
   transform: scale(1.02);
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+  animation: tilt-n-move-shaking-tight 0.1s infinite;
 }
 
 .note-title {
@@ -335,10 +373,12 @@ dialog::backdrop {
 
 .save-btn:hover {
   background: var(--base-color);
+  animation: tilt-n-move-shaking-tight 0.1s infinite;
 }
 
 .cancel-btn:hover {
   background-color: #000000;
+  animation: tilt-n-move-shaking-tight 0.1s infinite;
 }
 
 .empty-state {

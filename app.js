@@ -1,6 +1,18 @@
 let notes = [];
 let editingNoteId = null;
 
+const whole = document.querySelector("body");
+const noteCard = document.querySelector(".dialog-content");
+whole.addEventListener("keypress", shaking);
+noteCard.addEventListener("keypress", shaking);
+
+function shaking() {
+  whole.style.animation = "tilt-n-move-shaking 0.4s";
+  noteCard.style.animation = "tilt-n-move-shaking 0.4s";
+  setTimeout(() => whole.style.removeProperty("animation"), 50);
+  setTimeout(() => noteCard.style.removeProperty("animation"), 50);
+}
+
 function loadNotes() {
   const savedNotes = localStorage.getItem("quickNotes");
   return savedNotes ? JSON.parse(savedNotes) : [];
@@ -75,7 +87,7 @@ function renderNotes(noteArray = notes) {
         <button class="edit-btn" onclick="openNoteDialog('${
           note.id
         }')" title="Edit Note">
-          ✏️
+          👀
         </button>
         <button class="delete-btn" onclick="deleteNote('${
           note.id
@@ -122,7 +134,7 @@ function openNoteDialog(noteId = null) {
   if (noteId) {
     const noteToEdit = notes.find((note) => note.id === noteId);
     editingNoteId = noteId;
-    document.getElementById("dialogTitle").textContent = "Edit Note";
+    document.getElementById("dialogTitle").textContent = "View Note";
     titleInput.value = noteToEdit.title;
     contentInput.value = noteToEdit.content;
   } else {
