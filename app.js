@@ -144,13 +144,12 @@ function closeNoteDialog() {
 // function toggleTheme() {
 //   const isDark = document.body.classList.toggle("dark-theme");
 //   localStorage.setItem("theme", isDark ? "dark" : "light");
-//   document.getElementById("themeToggleBtn").textContent = isDark ? "☀️" : "🌙";
+
 // }
 
 function applyStoredTheme() {
   if (localStorage.getItem("theme") === "dark") {
     document.body.classList.add("dark-theme");
-    document.getElementById("themeToggleBtn").textContent = "☀️";
   }
 }
 
@@ -160,9 +159,6 @@ document.addEventListener("DOMContentLoaded", function () {
   renderNotes();
 
   document.getElementById("noteForm").addEventListener("submit", saveNote);
-  document
-    .getElementById("themeToggleBtn")
-    .addEventListener("click", toggleTheme);
 
   document
     .getElementById("noteDialog")
