@@ -1,0 +1,378 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --brand-color: #f6efd2;
+  --base-color: #e43636;
+  --surface-color: #fff;
+  --text-color: #f6efd2;
+  --secondary-text-color: #3c404f;
+  --base-transparent-90: rgba(247, 247, 247, 0.9);
+  --base-transparent-100: rgba(247, 247, 247, 1);
+}
+
+.dark-theme {
+  --brand-color: #8b90ff;
+  --base-color: #1e1f26;
+  --surface-color: #2c2f38;
+  --text-color: #f0f0f0;
+  --secondary-text-color: #b0b3c0;
+  --base-transparent-90: rgba(30, 31, 38, 0.9);
+  --base-transparent-100: rgba(30, 31, 38, 1);
+}
+
+body {
+  font-family: "JetBrains Mono", sans-serif;
+  margin: 2rem;
+  background: var(--base-color);
+  color: var(--text-color);
+}
+
+h1 {
+  margin-bottom: 1rem;
+  font-size: 6rem;
+  font-family: "Road Rage";
+  font-weight: 100;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.search-filter-bar {
+  padding-left: 4rem;
+  display: flex;
+  gap: 1.7rem;
+  align-items: center;
+  margin-top: 10px;
+}
+.search-box {
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.search-input {
+  background-color: var(--brand-color);
+  width: 25rem;
+  padding: 0.6rem;
+  border: none;
+  outline: none;
+}
+.search-btn {
+  background: var(--brand-color);
+  border: none;
+  padding: 12px 10px;
+  cursor: pointer;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search-btn:hover {
+  background-color: #7a7fff;
+}
+
+.fa-magnifying-glass {
+  color: #000000;
+}
+.filter-dropdown {
+  background: var(--brand-color);
+  color: #000000;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 5px;
+  font-family: "JetBrains Mono";
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: ease-in-out 0.2s;
+}
+
+.filter-dropdown:hover {
+  background: #000000;
+  color: var(--brand-color);
+}
+
+.add-note-btn {
+  background: #000000;
+  color: var(--brand-color);
+  border: none;
+  padding: 0.8rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.add-note-btn:hover {
+  background: var(--brand-color);
+  color: var(--base-color);
+}
+
+.theme-toggle-btn {
+  background: var(--surface-color);
+  color: var(--text-color);
+  border: 1px solid var(--surface-color);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  margin-left: 1rem;
+}
+
+.theme-toggle-btn:hover {
+  background: var(--brand-color);
+  color: white;
+}
+
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0rem 0rem 4rem;
+}
+
+.note-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--brand-color);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  border: 1px solid var(--surface-color);
+  transition: all 0.2s ease;
+  position: relative;
+  max-height: 300px;
+}
+
+.note-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+}
+
+.note-title {
+  font-family: "Road Rage";
+  font-size: 2.7rem;
+  font-weight: 100;
+  margin-bottom: 0.75rem;
+  color: #000000;
+  word-wrap: break-word;
+}
+
+.note-content {
+  color: var(--secondary-text-color);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  word-wrap: break-word;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.note-actions {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+}
+
+.note-card small {
+  color: #000000;
+  margin-top: auto;
+}
+
+.note-card:hover .note-actions {
+  opacity: 1;
+  visibility: visible;
+}
+
+.edit-btn,
+.delete-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+  background: var(--base-transparent-90);
+  color: var(--text-color);
+  border: 1px solid var(--surface-color);
+}
+
+.edit-btn:hover {
+  background: var(--base-transparent-100);
+  transform: scale(1.05);
+}
+
+.delete-btn:hover {
+  background: #ff5252;
+  transform: scale(1.05);
+  color: white;
+}
+
+dialog {
+  margin: auto;
+  inset: 0;
+  border: none;
+  border-radius: 1rem;
+  padding: 0;
+  background: var(--brand-color);
+  color: #000000;
+  max-width: 600px;
+  width: 90vw;
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4px);
+}
+
+.dialog-content {
+  padding: 2rem;
+}
+
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.dialog-title {
+  font-family: "Road Rage";
+  font-size: 4rem;
+  font-weight: 100;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--secondary-text-color);
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  transition: background 0.2s ease;
+}
+
+.close-btn:hover {
+  background: var(--surface-color);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #000000;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid var(--surface-color);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+  background: var(--base-color);
+  color: var(--brand-color);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--brand-color);
+}
+
+.form-textarea::placeholder {
+  color: var(--brand-color);
+}
+
+.form-input::placeholder {
+  color: var(--brand-color);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.dialog-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.cancel-btn,
+.save-btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.cancel-btn {
+  background: var(--base-color);
+  color: var(--text-color);
+}
+
+.save-btn {
+  background: #000000;
+  color: var(--brand-color);
+}
+
+.save-btn:hover {
+  background: var(--base-color);
+}
+
+.cancel-btn:hover {
+  background-color: #000000;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--secondary-text-color);
+}
+
+.empty-state h2 {
+  font-family: "Road Rage";
+  color: var(--brand-color);
+  font-size: 4rem;
+  margin-bottom: 0.5rem;
+  font-weight: 100;
+}
+
+.empty-state p {
+  color: var(--brand-color);
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
