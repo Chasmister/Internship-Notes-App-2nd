@@ -141,12 +141,6 @@ function closeNoteDialog() {
   document.getElementById("noteDialog").close();
 }
 
-// function toggleTheme() {
-//   const isDark = document.body.classList.toggle("dark-theme");
-//   localStorage.setItem("theme", isDark ? "dark" : "light");
-
-// }
-
 function applyStoredTheme() {
   if (localStorage.getItem("theme") === "dark") {
     document.body.classList.add("dark-theme");
