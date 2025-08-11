@@ -153,14 +153,8 @@ function closeNoteDialog() {
   document.getElementById("noteDialog").close();
 }
 
-function applyStoredTheme() {
-  if (localStorage.getItem("theme") === "dark") {
-    document.body.classList.add("dark-theme");
-  }
-}
 
 document.addEventListener("DOMContentLoaded", function () {
-  applyStoredTheme();
   notes = loadNotes();
   renderNotes();
 
